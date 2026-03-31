@@ -8,12 +8,12 @@ export const Input = ({ setInputValue, inputValue }) => {
   };
 
   return (
-    <div className="flex justify-center h-[38px]  gap-1.5">
+    <div className="flex justify-center h-[38px]  gap-1.5 text-sm">
       <input
         placeholder="Add a new task..."
         onChange={handleChange}
         value={inputValue}
-        className="rounded-md w-[280px] border-solid border-gray-400 px-3 py-2"
+        className="rounded-md w-[280px] border border-solid border-[#E4E4E7] px-3 py-2"
         type="text"
       />
     </div>

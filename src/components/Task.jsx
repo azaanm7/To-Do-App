@@ -2,16 +2,17 @@ import React from "react";
 
 export const Task = ({ isCompleted, taskName, handleCheck, handleDelete }) => {
   return (
-    <div className="flex w-full justify-between bg-[#F9FAFB] p-4 gap-2">
+    <div className="flex w-full justify-between bg-[#F9FAFB] p-4 gap-2 rounded-md">
       <div className="flex items-center gap-2.5">
         <input
           type="checkbox"
           checked={isCompleted}
-          className="size-4"
+          className="size-4 cursor-pointer accent-[#0275FF]"
           onChange={handleCheck}
         />
+
         <p
-          className="text-sm"
+          className="text-sm text-black first-letter:uppercase"
           style={{ textDecoration: isCompleted ? "line-through" : "" }}
         >
           {taskName}

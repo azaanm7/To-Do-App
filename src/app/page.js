@@ -22,6 +22,7 @@ export default function Home() {
       ...tasks,
     ]);
     setInputValue("");
+    setFilterValue("All");
   };
 
   const handleCheck = (taskId) => {
@@ -54,7 +55,7 @@ export default function Home() {
   };
 
   const deleteAllDone = () => {
-    if (window.confirm("Are you sure to delete all donw tasks?")) {
+    if (window.confirm("Are you sure you want to clear all completed tasks?")) {
       const updatedTasks = tasks.filter((task) => task.isCompleted === false);
       setTasks(updatedTasks);
     } else {
@@ -63,7 +64,7 @@ export default function Home() {
   };
   return (
     <div className="flex justify-center items-center bg-[#F3F4F6] h-dvh font-sans">
-      <div className="bg-white w-96 py-6 px-4 flex flex-col gap-10 shadow-lg">
+      <div className="bg-white w-96 py-6 px-4 flex flex-col gap-5 shadow-lg rounded-md">
         <div className="flex flex-col gap-8">
           <div className="container2 flex flex-col gap-5">
             <h1 className="text-black text-xl font-semibold flex justify-center">
@@ -95,7 +96,9 @@ export default function Home() {
                 {filteredTasks.length === 0 ? (
                   <div className="flex flex-col items-center justify-center pt-3">
                     <p className="text-gray-400 text-sm">
-                      No tasks yet. Add one above!
+                      {filterValue === "All"
+                        ? "No tasks yet. Add one above!"
+                        : "No tasks found."}
                     </p>
                   </div>
                 ) : (
@@ -113,15 +116,17 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {tasks.length > 0 && (
-          <TaskCount
-            deleteAllDone={deleteAllDone}
-            completedCount={
-              tasks.filter((task) => task.isCompleted === true).length
-            }
-            allCount={tasks.length}
-          />
-        )}
+        <div className="text-sm text-[#6B7280] ">
+          {tasks.length > 0 && (
+            <TaskCount
+              deleteAllDone={deleteAllDone}
+              completedCount={
+                tasks.filter((task) => task.isCompleted === true).length
+              }
+              allCount={tasks.length}
+            />
+          )}
+        </div>
 
         <div className="flex justify-center items-center font-sans text-xs gap-1">
           <p className="text-[#6B7280]">Powered by</p>
